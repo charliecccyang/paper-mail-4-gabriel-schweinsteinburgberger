@@ -3,6 +3,8 @@ package com.spotlight.platform.userprofile.api.model.profile.primitives;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+import java.util.List;
+
 public class UserProfilePropertyValue {
 
     private final Object value;
@@ -32,6 +34,22 @@ public class UserProfilePropertyValue {
             return false;
         }
         return value.equals(((UserProfilePropertyValue) obj).getValue());
+    }
+
+    public int getValueAsInt() {
+        if (value instanceof Number) {
+            return ((Number) value).intValue();
+        }
+        throw new UnsupportedOperationException("Value is not a Number.");
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public List<Object> getValueAsList() {
+        if (value instanceof List) {
+            return (List<Object>) value;
+        }
+        throw new UnsupportedOperationException("Value is not a List.");
     }
 }
 
