@@ -2,6 +2,7 @@ package com.spotlight.platform.userprofile.api.web.resources;
 
 import com.spotlight.platform.userprofile.api.core.profile.UserProfileService;
 import com.spotlight.platform.userprofile.api.model.commands.UserProfileCommand;
+import com.spotlight.platform.userprofile.api.model.commands.UserProfileCommands;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -28,5 +29,13 @@ public class CommandResource {
     public Response processCommand(@Valid UserProfileCommand command) {
         userProfileService.applyCommand(command);
         return Response.accepted().build();
+    }
+
+    @Path("/batch")
+    @POST
+    public void applyCommands(UserProfileCommands commands) {
+        for (UserProfileCommand command : commands.getCommands()) {
+            userProfileService.applyCommand(command);
+        }
     }
 }
