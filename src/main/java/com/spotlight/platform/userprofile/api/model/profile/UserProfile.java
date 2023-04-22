@@ -14,6 +14,10 @@ import java.util.Map;
 public record UserProfile(@JsonProperty UserId userId, @JsonProperty @JsonFormat(shape = JsonFormat.Shape.STRING) Instant latestUpdateTime,
                           @JsonProperty Map<UserProfilePropertyName, UserProfilePropertyValue> userProfileProperties) {
 
+    public Map<UserProfilePropertyName, UserProfilePropertyValue> getUserProfileProperties() {
+        return userProfileProperties;
+    }
+
     public void replaceProperty(UserProfilePropertyName propertyName, UserProfilePropertyValue propertyValue) {
         userProfileProperties.put(propertyName, propertyValue);
     }

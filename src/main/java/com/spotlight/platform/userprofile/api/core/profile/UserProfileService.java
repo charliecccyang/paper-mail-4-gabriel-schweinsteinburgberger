@@ -3,6 +3,7 @@ package com.spotlight.platform.userprofile.api.core.profile;
 import com.spotlight.platform.userprofile.api.core.exceptions.EntityNotFoundException;
 import com.spotlight.platform.userprofile.api.core.profile.persistence.UserProfileDao;
 import com.spotlight.platform.userprofile.api.model.commands.UserProfileCommand;
+import com.spotlight.platform.userprofile.api.model.commands.UserProfileCommands;
 import com.spotlight.platform.userprofile.api.model.profile.UserProfile;
 import com.spotlight.platform.userprofile.api.model.profile.primitives.UserId;
 
@@ -31,5 +32,9 @@ public class UserProfileService {
 
         command.apply(userProfile);
         userProfileDao.put(userProfile);
+    }
+
+    public void applyCommands(UserProfileCommands commands) {
+        commands.getCommands().forEach(this::applyCommand);
     }
 }
