@@ -5,7 +5,7 @@ import com.spotlight.platform.userprofile.api.model.configuration.UserProfileApi
 import com.spotlight.platform.userprofile.api.web.exceptionmappers.EntityNotFoundExceptionMapper;
 import com.spotlight.platform.userprofile.api.web.healthchecks.PreventStartupWarningHealthCheck;
 import com.spotlight.platform.userprofile.api.web.modules.UserProfileApiModule;
-
+import com.spotlight.platform.userprofile.api.web.resources.CommandResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -36,6 +36,7 @@ public class UserProfileApiApplication extends Application<UserProfileApiConfigu
     public void run(UserProfileApiConfiguration configuration, Environment environment) {
         registerHealthChecks(environment);
         registerExceptionMappers(environment);
+        environment.jersey().register(getInstance(CommandResource.class));
     }
 
     public static void main(String[] args) throws Exception {
