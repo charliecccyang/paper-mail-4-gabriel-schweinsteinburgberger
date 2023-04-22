@@ -57,6 +57,14 @@ java -jar ./build/libs/userprofile-api-1.0.0-SNAPSHOT.jar server
 
 ### Examples
 
+#### Retrieve User Profile API
+
+To invoke the Retrieve user profile API using curl, you can use the following command:
+
+```bash
+curl http://localhost:8080/users/de4310e5-b139-441a-99db-77c9c4a5fada/profile
+```
+
 #### Replace API
 
 To invoke the replace API using curl, you can use the following command:
