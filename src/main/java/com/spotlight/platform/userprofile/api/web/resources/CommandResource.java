@@ -33,9 +33,10 @@ public class CommandResource {
 
     @Path("/batch")
     @POST
-    public void applyCommands(UserProfileCommands commands) {
+    public Response applyCommands(UserProfileCommands commands) {
         for (UserProfileCommand command : commands.getCommands()) {
             userProfileService.applyCommand(command);
         }
+        return Response.accepted().build();
     }
 }
