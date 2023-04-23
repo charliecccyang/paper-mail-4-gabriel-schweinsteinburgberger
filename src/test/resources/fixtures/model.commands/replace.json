@@ -1,0 +1,8 @@
+{
+  "userId": "de4310e5-b139-441a-99db-77c9c4a5fada",
+  "type": "replace",
+  "properties": {
+    "currentGold": 500,
+    "currentGems": 800
+  }
+}
